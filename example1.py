@@ -1,4 +1,5 @@
 import random
+from typing import List
 
 class Environment:
     def __init__(self):
@@ -27,3 +28,24 @@ class Environment:
         self.steps_left -= 1
         return random.random()
 
+
+class Agent:
+    def __init__(self):
+        # A counter to keep the total reward
+        self.total_reward = 0.0
+
+    def step(self, env: Environment):
+        current_obs = env.get_observation()
+        actions = env.get_actions()
+        reward = env.action(random.choice(actions))
+        
+        self.total_reward += reward
+
+    
+if __name__ == "__main__":
+    env = Environment()
+    agent = Agent()
+    while not env.is_done():
+        agent.step(env)
+    
+    print(f"Total reward got: {agent.total_reward:.4f}")
