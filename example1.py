@@ -1,6 +1,11 @@
 import random
 from typing import List
 
+"""
+Agent anatomy example 
+"""
+
+
 class Environment:
     def __init__(self):
         self.steps_left = 10
